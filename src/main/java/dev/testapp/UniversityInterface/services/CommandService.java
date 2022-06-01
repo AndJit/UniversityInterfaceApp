@@ -22,11 +22,11 @@ public class CommandService {
         String[] commandWords = commandKey.split(" ");
         String[] inputWords = input.split(" ");
 
-        int paramIndex = wordNum(commandWords, "%");
         if (inputWords.length == commandWords.length){
+            int paramIndex = wordNum(commandWords, "%");
             String vParam = inputWords[paramIndex];
             inputWords[paramIndex] = "%";
-            if(Arrays.compare(inputWords,commandWords) == 0) param = vParam;
+            if(Arrays.equals(inputWords,commandWords)) param = vParam;
         }
         return param;
     }
