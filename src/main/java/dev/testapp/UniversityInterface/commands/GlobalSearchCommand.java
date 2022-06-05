@@ -3,7 +3,6 @@ package dev.testapp.UniversityInterface.commands;
 import dev.testapp.UniversityInterface.entities.Lector;
 import dev.testapp.UniversityInterface.repositories.LectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -27,6 +26,6 @@ public class GlobalSearchCommand implements Command {
 
     @Override
     public String getKey() {
-        return "Global search by %";
+        return "Global search by (\\w+)";
     }
 }

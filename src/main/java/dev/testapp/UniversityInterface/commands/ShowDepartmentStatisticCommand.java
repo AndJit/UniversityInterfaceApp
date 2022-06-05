@@ -29,6 +29,6 @@ public class ShowDepartmentStatisticCommand implements Command{
 
     @Override
     public String getKey() {
-        return "Show % statistics";
+        return "Show (\\w+) statistics";
     }
 }

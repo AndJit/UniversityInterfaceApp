@@ -4,11 +4,9 @@ import dev.testapp.UniversityInterface.commands.Command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static dev.testapp.UniversityInterface.utils.Util.wordNum;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class CommandService {
@@ -18,16 +16,9 @@ public class CommandService {
 
     public String getParam(String input, String commandKey){
         String param = null;
-
-        String[] commandWords = commandKey.split(" ");
-        String[] inputWords = input.split(" ");
-
-        if (inputWords.length == commandWords.length){
-            int paramIndex = wordNum(commandWords, "%");
-            String vParam = inputWords[paramIndex];
-            inputWords[paramIndex] = "%";
-            if(Arrays.equals(inputWords,commandWords)) param = vParam;
-        }
+        Pattern pattern = Pattern.compile(commandKey);
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.find()) param = matcher.group(1);
         return param;
     }
 

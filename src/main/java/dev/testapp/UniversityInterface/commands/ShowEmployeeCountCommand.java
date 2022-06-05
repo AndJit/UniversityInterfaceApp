@@ -20,6 +20,6 @@ public class ShowEmployeeCountCommand implements Command{
 
     @Override
     public String getKey() {
-        return "Show count of employee for %";
+        return "Show count of employee for (\\w+)";
     }
 }

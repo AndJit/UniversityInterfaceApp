@@ -20,16 +20,12 @@ public class ShowAverageSalaryDepartmentCommand implements Command{
         Department department = departmentRepository.findDepartmentByName(arg);
         if (department == null) return;
         List<Lector> lectors  = department.getLectors();
-        int i = 0;
-        double salaries = 0;
-        for (; i < lectors.size(); i++) {
-            salaries += lectors.get(i).getSalary();
-        }
-        System.out.printf("The average salary of %s is %f", arg, salaries/i);
+        double salaries = lectors.stream().mapToDouble(Lector::getSalary).sum();
+        System.out.printf("The average salary of %s is %f", arg, salaries/lectors.size());
     }
 
     @Override
     public String getKey() {
-        return "Show the average salary for the department %";
+        return "Show the average salary for the department (\\w+)";
     }
 }

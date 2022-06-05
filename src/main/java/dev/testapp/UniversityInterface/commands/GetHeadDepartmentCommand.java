@@ -20,6 +20,6 @@ public class GetHeadDepartmentCommand implements Command{
 
     @Override
     public String getKey() {
-        return "Who is head of department %";
+        return "Who is head of department (\\w+)";
     }
 }
